@@ -15,7 +15,7 @@ export default function NoticesPage() {
   }, [])
 
   // Mock data
-  const categories = ["All", "General", "Senior", "Junior", "Sports", "Events"]
+  const categories = ["All", "Year 7", "Year 8", "Year 9", "Year 10", "Year 11", "Year 12"]
   const currentDate = "May 11, 2025"
 
   const notices = [
@@ -23,7 +23,7 @@ export default function NoticesPage() {
       id: 1,
       title: "School Assembly",
       content: "There will be a whole school assembly on Monday at 9:00 AM in the Great Hall.",
-      category: "General",
+      category: "All",
       date: "May 11, 2025",
       isPinned: true,
     },
@@ -31,7 +31,7 @@ export default function NoticesPage() {
       id: 2,
       title: "Year 12 Trial Exams",
       content: "Year 12 trial exams will commence on June 1st. Please check the exam timetable on the school website.",
-      category: "Senior",
+      category: "Year 12",
       date: "May 10, 2025",
       isPinned: true,
     },
@@ -39,7 +39,7 @@ export default function NoticesPage() {
       id: 3,
       title: "Basketball Trials",
       content: "Basketball trials for the school team will be held on Wednesday after school in the gym.",
-      category: "Sports",
+      category: "All",
       date: "May 9, 2025",
       isPinned: false,
     },
@@ -48,7 +48,7 @@ export default function NoticesPage() {
       title: "Debating Competition",
       content:
         "The inter-school debating competition will be held next Friday. All participants must attend the briefing on Tuesday.",
-      category: "Events",
+      category: "All",
       date: "May 8, 2025",
       isPinned: false,
     },
@@ -57,7 +57,7 @@ export default function NoticesPage() {
       title: "Year 7 Excursion",
       content:
         "Year 7 students will be going on an excursion to the museum on Thursday. Permission slips must be returned by Monday.",
-      category: "Junior",
+      category: "Year 7",
       date: "May 7, 2025",
       isPinned: false,
     },
