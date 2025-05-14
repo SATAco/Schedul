@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Settings } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Calendar, Bell, Clock, CreditCard, Award } from "lucide-react"
+import { Calendar, Bell, Clock, Clipboard, Award } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 export default function SettingsMenu() {
@@ -36,7 +36,7 @@ export default function SettingsMenu() {
     { id: "timetable", label: "Timetable", icon: <Calendar className="h-4 w-4" /> },
     { id: "notices", label: "Daily Notices", icon: <Bell className="h-4 w-4" /> },
     { id: "bell-times", label: "Bell Times", icon: <Clock className="h-4 w-4" /> },
-    { id: "id-card", label: "ID Card", icon: <CreditCard className="h-4 w-4" /> },
+    { id: "clipboard", label: "Clipboard", icon: <Clipboard className="h-4 w-4" /> },
     { id: "awards", label: "Award Points", icon: <Award className="h-4 w-4" /> },
   ]
 

@@ -7,7 +7,7 @@ import ClientLayout from "./client-layout"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "G'DayO",
+  title: "Schedul",
   description: "Built For Sydney Boys High School",
     generator: 'v0.dev'
 }

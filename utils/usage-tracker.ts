@@ -35,7 +35,7 @@ export const trackSectionUsage = (section: NavItem): void => {
     timetable: 0,
     notices: 0,
     "bell-times": 0,
-    "id-card": 0,
+    clipboard: 0,
     awards: 0,
   }
 

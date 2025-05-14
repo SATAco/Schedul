@@ -48,7 +48,7 @@ export default function Home() {
       <main className="container max-w-lg mx-auto px-4 py-6">
         <div className="flex justify-between items-center mb-6 fade-in">
           <div>
-            <h1 className="text-2xl font-bold">G'DayO</h1>
+            <h1 className="text-2xl font-bold">Schedul</h1>
             <p className="text-sm text-gray-500 dark:text-gray-400">Built For Sydney Boys High School</p>
           </div>
           <div className="flex gap-2">

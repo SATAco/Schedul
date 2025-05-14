@@ -1,10 +1,10 @@
 "use client"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Calendar, Bell, Clock, CreditCard, Award, Home } from "lucide-react"
+import { Calendar, Bell, Clock, Clipboard, Award, Home } from "lucide-react"
 import { motion } from "framer-motion"
 
-export type NavItem = "home" | "timetable" | "notices" | "bell-times" | "id-card" | "awards"
+export type NavItem = "home" | "timetable" | "notices" | "bell-times" | "clipboard" | "awards"
 
 interface BottomNavProps {
   onNavItemClick?: (item: NavItem) => void
@@ -39,10 +39,10 @@ export default function BottomNav({ onNavItemClick }: BottomNavProps) {
       href: "/bell-times",
     },
     {
-      name: "id-card" as NavItem,
-      icon: <CreditCard className="h-5 w-5" />,
-      label: "ID Card",
-      href: "/id-card",
+      name: "clipboard" as NavItem,
+      icon: <Clipboard className="h-5 w-5" />,
+      label: "Clipboard",
+      href: "/clipboard",
     },
     {
       name: "awards" as NavItem,

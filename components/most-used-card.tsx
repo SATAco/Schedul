@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import type { NavItem } from "@/components/bottom-nav"
 import { getMostUsedSection } from "@/utils/usage-tracker"
-import { Calendar, Bell, Clock, CreditCard, Award, ArrowRight } from "lucide-react"
+import { Calendar, Bell, Clock, Clipboard, Award, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { formatDate } from "@/utils/time-utils"
 import { useTimetable } from "@/contexts/timetable-context"
@@ -200,24 +200,21 @@ export default function MostUsedCard() {
             </Link>
           </>
         )
-      case "id-card":
+      case "clipboard":
         return (
           <>
             <div className="flex items-center justify-between mb-3">
-              <h3 className="font-semibold">ID Card</h3>
+              <h3 className="font-semibold">Clipboard</h3>
             </div>
-            <div className="flex justify-center mb-3">
-              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-3 w-full text-center">
-                <p className="font-semibold text-sm">John Smith</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Student ID: 202512345</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Year 11</p>
-              </div>
+            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-3 mb-3 text-center">
+              <p className="font-semibold text-sm">School Calendar</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">View your school events and activities</p>
             </div>
             <Link
-              href="/id-card"
+              href="/clipboard"
               className="flex items-center justify-center text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-all duration-200 ease-in-out"
             >
-              View full ID card
+              Open Clipboard
               <ArrowRight className="h-4 w-4 ml-1" />
             </Link>
           </>
@@ -268,8 +265,8 @@ export default function MostUsedCard() {
         return <Bell className="h-5 w-5" />
       case "bell-times":
         return <Clock className="h-5 w-5" />
-      case "id-card":
-        return <CreditCard className="h-5 w-5" />
+      case "clipboard":
+        return <Clipboard className="h-5 w-5" />
       case "awards":
         return <Award className="h-5 w-5" />
       default:
@@ -285,8 +282,8 @@ export default function MostUsedCard() {
         return "Daily Notices"
       case "bell-times":
         return "Bell Times"
-      case "id-card":
-        return "ID Card"
+      case "clipboard":
+        return "Clipboard"
       case "awards":
         return "Award Points"
       default:
