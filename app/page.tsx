@@ -124,7 +124,7 @@ export default function Home() {
 
         {/* Most Used Section */}
         <div className="mb-6">
-          <h3 className="text-lg font-semibold mb-3">Most Used</h3>
+          <h3 className="text-lg font-semibold mb-3">Favourite</h3>
           <MostUsedCard />
         </div>
       </main>
