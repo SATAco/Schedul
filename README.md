@@ -1,3 +1,10 @@
+# What is Schedul?
+
+Schedul is a Vercel-hosted UI-centred student app. It includes Clipboard Integration, Daily Notices, Timetable, Award Scheme Points, Countdown, and More. 
+
+Schedul is still in development, NO API INTEGRATION AT THE MOMENT.
+The Project design was kickstarted by V0.dev.
+
 # New Project
 
 *Automatically synced with your [v0.dev](https://v0.dev) deployments*
