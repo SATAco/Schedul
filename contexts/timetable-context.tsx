@@ -42,15 +42,15 @@ const TimetableContext = createContext<TimetableContextType | undefined>(undefin
 // Updated bell times for different day groups
 const bellTimesData = {
   "Mon/Tues": [
-    { period: "Period 1", time: "9:00 - 10:05" },
-    { period: "Period 2", time: "10:05 - 11:05" },
-    { period: "Recess", time: "11:05 - 11:25" },
-    { period: "Period 3", time: "11:25 - 12:30" },
-    { period: "Period 4", time: "12:30 - 1:30" },
-    { period: "Lunch 1", time: "1:30 - 1:50" },
-    { period: "Lunch 2", time: "1:50 - 2:10" },
-    { period: "Period 5", time: "2:10 - 3:10" },
-    { period: "End of Day", time: "3:10" },
+    { period: "Period 1", time: "9:00 AM - 10:05 AM },
+    { period: "Period 2", time: "10:05 AM - 11:05 AM" },
+    { period: "Recess", time: "11:05 AM - 11:25 AM" },
+    { period: "Period 3", time: "11:25 AM - 12:30 PM" },
+    { period: "Period 4", time: "12:30 PM - 1:30 PM" },
+    { period: "Lunch 1", time: "1:30 PM - 1:50 PM" },
+    { period: "Lunch 2", time: "1:50 PM - 2:10 PM" },
+    { period: "Period 5", time: "2:10 PM - 3:10 PM" },
+    { period: "End of Day", time: "3:10 PM" },
   ],
   "Wed/Thurs": [
     { period: "Period 1", time: "9:00 - 10:05" },
