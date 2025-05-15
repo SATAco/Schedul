@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import type { ReactNode } from "react"
 import BottomNav from "@/components/bottom-nav"
 import AnimatePresenceWrapper from "@/components/animate-presence-wrapper"
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider, UserSettingsProvider } from "@/components/theme-provider"
 import { TimetableProvider } from "@/contexts/timetable-context"
 
 export default function ClientLayout({ children }: { children: ReactNode }) {
@@ -21,18 +21,20 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
       defaultTheme="light"
       enableSystem
       disableTransitionOnChange={false}
-      storageKey="gdayo-theme-preference"
+      storageKey="schedul-theme-preference"
     >
-      <TimetableProvider>
-        {mounted && (
-          <>
-            <AnimatePresenceWrapper>
-              <div className="pb-20">{children}</div>
-            </AnimatePresenceWrapper>
-            <BottomNav />
-          </>
-        )}
-      </TimetableProvider>
+      <UserSettingsProvider>
+        <TimetableProvider>
+          {mounted && (
+            <>
+              <AnimatePresenceWrapper>
+                <div className="pb-20">{children}</div>
+              </AnimatePresenceWrapper>
+              <BottomNav />
+            </>
+          )}
+        </TimetableProvider>
+      </UserSettingsProvider>
     </ThemeProvider>
   )
 }

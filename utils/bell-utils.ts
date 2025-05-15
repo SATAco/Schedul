@@ -1,4 +1,5 @@
 import type { BellTime } from "@/contexts/timetable-context"
+import { formatTo12Hour, isWithinSchoolHours } from "./time-utils"
 
 // Parse time string (e.g., "9:00 - 10:05" or "3:10") to get Date object
 export const parseBellTime = (timeString: string): { start: Date; end: Date | null } => {
@@ -36,6 +37,35 @@ export const parseBellTime = (timeString: string): { start: Date; end: Date | nu
   }
 }
 
+// Format time string to 12-hour format
+export const formatTimeTo12Hour = (timeString: string): string => {
+  if (timeString.includes(" - ")) {
+    const [startStr, endStr] = timeString.split(" - ")
+
+    const startParts = startStr.trim().split(":")
+    const startHour = Number.parseInt(startParts[0], 10)
+    const startMinute = Number.parseInt(startParts[1], 10)
+    const startDate = new Date()
+    startDate.setHours(startHour, startMinute, 0, 0)
+
+    const endParts = endStr.trim().split(":")
+    const endHour = Number.parseInt(endParts[0], 10)
+    const endMinute = Number.parseInt(endParts[1], 10)
+    const endDate = new Date()
+    endDate.setHours(endHour, endMinute, 0, 0)
+
+    return `${formatTo12Hour(startDate)} - ${formatTo12Hour(endDate)}`
+  } else {
+    const timeParts = timeString.trim().split(":")
+    const hour = Number.parseInt(timeParts[0], 10)
+    const minute = Number.parseInt(timeParts[1], 10)
+    const date = new Date()
+    date.setHours(hour, minute, 0, 0)
+
+    return formatTo12Hour(date)
+  }
+}
+
 // Calculate time until next bell
 export const getNextBell = (
   bellTimes: BellTime[],
@@ -46,6 +76,16 @@ export const getNextBell = (
   currentPeriod: BellTime | null
 } => {
   const now = new Date()
+
+  // Check if within school hours
+  if (!isWithinSchoolHours()) {
+    return {
+      nextBell: null,
+      timeUntil: 0,
+      isCurrentlyInPeriod: false,
+      currentPeriod: null,
+    }
+  }
 
   // Find current period
   let currentPeriod: BellTime | null = null

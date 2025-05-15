@@ -61,6 +61,38 @@ export default function NoticesPage() {
       date: "May 7, 2025",
       isPinned: false,
     },
+    {
+      id: 6,
+      title: "Year 8 Science Project",
+      content: "Year 8 science projects are due next Friday. Please submit your work to your science teacher.",
+      category: "Year 8",
+      date: "May 6, 2025",
+      isPinned: false,
+    },
+    {
+      id: 7,
+      title: "Year 9 Parent-Teacher Interviews",
+      content: "Year 9 parent-teacher interviews will be held next Tuesday from 4:00 PM to 7:00 PM.",
+      category: "Year 9",
+      date: "May 5, 2025",
+      isPinned: false,
+    },
+    {
+      id: 8,
+      title: "Year 10 Work Experience",
+      content: "Year 10 work experience forms must be submitted by the end of this week.",
+      category: "Year 10",
+      date: "May 4, 2025",
+      isPinned: false,
+    },
+    {
+      id: 9,
+      title: "Year 11 Subject Selection",
+      content: "Year 11 students must complete their subject selection for next year by the end of the month.",
+      category: "Year 11",
+      date: "May 3, 2025",
+      isPinned: false,
+    },
   ]
 
   return (
@@ -77,23 +109,25 @@ export default function NoticesPage() {
         <p className="text-center text-sm text-gray-500 dark:text-gray-400 mb-4">{currentDate}</p>
 
         <Tabs defaultValue="All" className="mb-6">
-          <TabsList className="grid grid-cols-3 mb-4 sm:grid-cols-6">
-            {categories.map((category) => (
-              <TabsTrigger key={category} value={category} className="text-xs">
-                {category}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+          <div className="overflow-x-auto pb-2">
+            <TabsList className="inline-flex min-w-full mb-4">
+              {categories.map((category) => (
+                <TabsTrigger key={category} value={category} className="text-xs whitespace-nowrap">
+                  {category}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
 
           {categories.map((category) => (
             <TabsContent key={category} value={category}>
               <div className="space-y-4">
                 {notices
-                  .filter((notice) => category === "All" || notice.category === category)
+                  .filter((notice) => category === "All" || notice.category === category || notice.category === "All")
                   .map((notice) => (
                     <Card
                       key={notice.id}
-                      className="rounded-[1.5rem] bg-white dark:bg-gray-900 shadow-md p-5 border border-gray-100 dark:border-gray-800"
+                      className="rounded-[1.5rem] bg-white dark:bg-gray-900 shadow-md p-5 border border-gray-100 dark:border-gray-800 backdrop-blur-md bg-opacity-90 dark:bg-opacity-90"
                     >
                       <div className="flex justify-between items-start mb-2">
                         <h2 className="text-lg font-semibold">{notice.title}</h2>

@@ -1,9 +1,17 @@
-// Get current time in HH:MM format
+// Get current time in 12-hour format (HH:MM AM/PM)
 export const getCurrentTime = (): string => {
   const now = new Date()
-  const hours = now.getHours().toString().padStart(2, "0")
-  const minutes = now.getMinutes().toString().padStart(2, "0")
-  return `${hours}:${minutes}`
+  return formatTo12Hour(now)
+}
+
+// Format time to 12-hour format
+export const formatTo12Hour = (date: Date): string => {
+  let hours = date.getHours()
+  const minutes = date.getMinutes().toString().padStart(2, "0")
+  const ampm = hours >= 12 ? "PM" : "AM"
+  hours = hours % 12
+  hours = hours ? hours : 12 // the hour '0' should be '12'
+  return `${hours}:${minutes} ${ampm}`
 }
 
 // Parse time string (e.g., "8:45 - 9:45") to get start and end times
@@ -108,4 +116,17 @@ export const getCurrentDay = (): string => {
 // Format date as "Month Day, Year"
 export const formatDate = (date: Date = new Date()): string => {
   return date.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+}
+
+// Check if current time is within school hours
+export const isWithinSchoolHours = (): boolean => {
+  const now = new Date()
+  const day = now.getDay() // 0 is Sunday, 6 is Saturday
+
+  // Return false for weekends
+  if (day === 0 || day === 6) return false
+
+  const hours = now.getHours()
+  // School hours: 8:00 AM to 4:00 PM (8 to 16)
+  return hours >= 8 && hours < 16
 }

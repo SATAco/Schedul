@@ -35,7 +35,7 @@ export default function BottomNav({ onNavItemClick }: BottomNavProps) {
     {
       name: "bell-times" as NavItem,
       icon: <Clock className="h-5 w-5" />,
-      label: "Bell Times",
+      label: "Bells",
       href: "/bell-times",
     },
     {
@@ -63,7 +63,7 @@ export default function BottomNav({ onNavItemClick }: BottomNavProps) {
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
-      className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 px-2 py-2 z-50"
+      className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 px-2 py-2 z-50 backdrop-blur-md bg-opacity-90 dark:bg-opacity-90"
     >
       <div className="flex justify-around items-center">
         {navItems.map((item) => {

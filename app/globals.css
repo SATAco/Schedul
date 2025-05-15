@@ -28,6 +28,10 @@
     /* SBHS Colors */
     --sbhs-blue: 217 71% 53%;
     --sbhs-gold: 43 89% 38%;
+
+    /* Theme color (will be set by JS) */
+    --theme-color-light: from-blue-600 to-blue-800;
+    --theme-color-dark: from-blue-500 to-blue-700;
   }
 
   .dark {
@@ -104,6 +108,10 @@
   .pulse-subtle {
     @apply animate-[pulse_2s_ease-in-out_infinite];
   }
+
+  .backdrop-blur-card {
+    @apply backdrop-blur-md bg-opacity-90 dark:bg-opacity-90;
+  }
 }
 
 @keyframes fadeIn {
@@ -128,7 +136,7 @@
 
 @layer components {
   .one-ui-card {
-    @apply rounded-[1.5rem] bg-white dark:bg-gray-900 shadow-md p-5 border border-gray-100 dark:border-gray-800 transition-all duration-300 ease-in-out;
+    @apply rounded-[1.5rem] bg-white dark:bg-gray-900 shadow-md p-5 border border-gray-100 dark:border-gray-800 transition-all duration-300 ease-in-out backdrop-blur-card;
   }
 
   .one-ui-header {
@@ -185,5 +193,9 @@
 
   .one-ui-micro {
     @apply text-xs text-gray-500 dark:text-gray-400;
+  }
+
+  .theme-gradient {
+    @apply bg-gradient-to-r var(--theme-color-light) dark:var(--theme-color-dark) bg-clip-text text-transparent;
   }
 }

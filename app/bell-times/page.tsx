@@ -10,6 +10,7 @@ import PageTransition from "@/components/page-transition"
 import { useTimetable } from "@/contexts/timetable-context"
 import BellCountdown from "@/components/bell-countdown"
 import { formatDate } from "@/utils/time-utils"
+import { formatTimeTo12Hour } from "@/utils/bell-utils"
 
 export default function BellTimesPage() {
   const { bellTimes } = useTimetable()
@@ -29,7 +30,7 @@ export default function BellTimesPage() {
           <Link href="/" className="text-gray-500 dark:text-gray-400">
             <ChevronLeft className="h-6 w-6" />
           </Link>
-          <h1 className="text-2xl font-bold">Bell Times</h1>
+          <h1 className="text-2xl font-bold">Bells</h1>
           <div className="w-6"></div> {/* Empty div for spacing */}
         </div>
 
@@ -80,7 +81,7 @@ export default function BellTimesPage() {
                     >
                       <div className="flex justify-between items-center">
                         <p className="font-semibold text-sm">{bell.period}</p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">{bell.time}</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">{formatTimeTo12Hour(bell.time)}</p>
                       </div>
                     </div>
                   ))}

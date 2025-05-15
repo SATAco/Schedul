@@ -9,6 +9,8 @@ import Link from "next/link"
 import { formatDate } from "@/utils/time-utils"
 import { useTimetable } from "@/contexts/timetable-context"
 import { getCurrentDay } from "@/utils/time-utils"
+import { useUserSettings } from "@/components/theme-provider"
+import { formatTimeTo12Hour } from "@/utils/bell-utils"
 
 // Mock data for different sections
 const notices = [
@@ -32,6 +34,7 @@ export default function MostUsedCard() {
   const [mostUsed, setMostUsed] = useState<NavItem>("timetable")
   const [mounted, setMounted] = useState(false)
   const { nextPeriodInfo, bellTimes } = useTimetable()
+  const { colorTheme } = useUserSettings()
   const currentDay = getCurrentDay()
 
   // Determine which bell times schedule to use based on the current day
@@ -50,7 +53,7 @@ export default function MostUsedCard() {
     setMounted(true)
 
     // Determine which section to show based on user preference
-    const preferredSection = localStorage.getItem("gdayo-most-used-preference")
+    const preferredSection = localStorage.getItem("schedul-most-used-preference")
 
     if (preferredSection && preferredSection !== "auto") {
       setMostUsed(preferredSection as NavItem)
@@ -62,7 +65,7 @@ export default function MostUsedCard() {
   // Listen for changes to the localStorage
   useEffect(() => {
     const handleStorageChange = () => {
-      const preferredSection = localStorage.getItem("gdayo-most-used-preference")
+      const preferredSection = localStorage.getItem("schedul-most-used-preference")
       if (preferredSection && preferredSection !== "auto") {
         setMostUsed(preferredSection as NavItem)
       } else {
@@ -84,6 +87,22 @@ export default function MostUsedCard() {
   }, [])
 
   if (!mounted) return null
+
+  // Get color theme classes for icon background
+  const getIconBgClass = () => {
+    switch (colorTheme) {
+      case "purple":
+        return "bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400"
+      case "green":
+        return "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400"
+      case "red":
+        return "bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400"
+      case "orange":
+        return "bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400"
+      default:
+        return "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400"
+    }
+  }
 
   const renderContent = () => {
     switch (mostUsed) {
@@ -186,7 +205,7 @@ export default function MostUsedCard() {
                 >
                   <div className="flex justify-between items-center">
                     <p className="font-semibold text-sm">{bell.period}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">{bell.time}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{formatTimeTo12Hour(bell.time)}</p>
                   </div>
                 </div>
               ))}
@@ -281,7 +300,7 @@ export default function MostUsedCard() {
       case "notices":
         return "Daily Notices"
       case "bell-times":
-        return "Bell Times"
+        return "Bells"
       case "clipboard":
         return "Clipboard"
       case "awards":
@@ -292,12 +311,10 @@ export default function MostUsedCard() {
   }
 
   return (
-    <Card className="rounded-[1.5rem] bg-white dark:bg-gray-900 shadow-md border border-gray-100 dark:border-gray-800 hover-scale">
+    <Card className="rounded-[1.5rem] bg-white dark:bg-gray-900 shadow-md border border-gray-100 dark:border-gray-800 hover-scale backdrop-blur-card">
       <CardContent className="p-5">
         <div className="flex items-center gap-3 mb-4">
-          <div className="rounded-full p-2 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
-            {getIcon()}
-          </div>
+          <div className={`rounded-full p-2 ${getIconBgClass()}`}>{getIcon()}</div>
           <h2 className="text-lg font-semibold">{getTitle()}</h2>
         </div>
         {renderContent()}
