@@ -15,7 +15,7 @@ export default function BellCountdown() {
     isCurrentlyInPeriod: boolean
     currentPeriod: { period: string; time: string } | null
   }>({
-    nextBell: null,
+    nextBell: var,
     isCurrentlyInPeriod: false,
     currentPeriod: null,
   })
